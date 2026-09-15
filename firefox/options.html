@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="th"><head><meta charset="utf-8"><title>Image Lens · ตั้งค่า</title><link rel="stylesheet" href="ui.css"></head>
+<body><main><div class="brand">◈ IMAGE LENS <span>SETUP</span></div>
+<link rel="stylesheet" href="theme.css">
+<h1>เลือกตัวช่วยแปล<br><em>แล้วไปอ่านต่อได้เลย</em></h1>
+<p>ใช้บริการที่รองรับภาพและ API รูปแบบ OpenAI Chat Completions ผู้ใช้แต่ละคนใช้ key ของตนเอง</p>
+<form id="form">
+<label>API endpoint<input id="endpoint" type="url" required value="https://api.openai.com/v1/chat/completions"></label>
+<label>ชื่อโมเดลที่รองรับภาพ<input id="model" list="models" required placeholder="กดดึงรายชื่อโมเดลด้านล่าง" maxlength="120"><datalist id="models"></datalist></label>
+<label>API key<input id="key" type="password" required autocomplete="off" placeholder="เก็บเฉพาะจนปิดเบราว์เซอร์"></label>
+<button id="list-models" type="button" class="secondary">ดึงรายชื่อโมเดลจากบริการ</button>
+<label id="model-picker-label" hidden>เลือกโมเดลที่บริการส่งกลับ<select id="model-picker"><option value="">เลือกโมเดล</option></select></label>
+<small>รายชื่อไม่ได้รับรองว่าโมเดลรับภาพหรือใช้ฟรี ต้องตรวจเงื่อนไขของบริการ</small>
+<button id="test" type="button" class="secondary">ทดสอบโมเดลด้วยภาพตัวอย่าง</button>
+<small>ส่งภาพคำว่า HELLO ที่สร้างในเครื่อง ไม่ส่งภาพเว็บ การทดสอบใช้โควตา API</small>
+<button id="quality-test" type="button" class="secondary">ทดสอบการอ่านข้อความจากภาพและแปลภาษา</button>
+<small>ทดสอบข้อความตัวอย่างจากภาพ ด้วยโมเดลที่เลือก ใช้โควตาเพิ่ม 1 คำขอ</small>
+<p id="status" role="status" style="white-space:pre-wrap"></p>
+<details><summary>รายละเอียดผลแปลล่าสุด (เก็บเฉพาะ session)</summary><button id="diagnostic" type="button" class="secondary">แสดงผลล่าสุด</button><pre id="diagnostic-output" style="white-space:pre-wrap;overflow-wrap:anywhere"></pre></details>
+<label>ภาษาปลายทาง<select id="language"><option value="Thai">ไทย</option><option value="English">English</option></select></label>
+<label>คำหยาบในคำแปล<select id="censorMode"><option value="partial">เซ็นเซอร์บางส่วน</option><option value="original">ตามต้นฉบับ ไม่เซ็นเซอร์</option></select></label>
+<small>กรองด้วยรายการคำหลังแปล ไม่เรียก AI เพิ่ม รายการยังไม่ครอบคลุมทุกคำและคำเลี่ยง รายละเอียดผลแปลล่าสุดยังเป็นข้อมูลดิบที่ไม่เซ็นเซอร์ ภาพต้นฉบับไม่ถูกแก้ไข</small>
+<div class="notice">ภาพทั้งพื้นที่เว็บที่มองเห็นอาจมีชื่อบัญชีหรือข้อมูลอื่นปะปน บริการที่เลือกจะได้รับภาพและประมวลผลตามนโยบายของบริการนั้น ส่วนขยายไม่เก็บภาพลงดิสก์ ไม่มี analytics เก็บ API key ใน session หรือในโปรไฟล์เครื่องนี้เมื่อเลือกจำคีย์ (ไม่เข้ารหัสด้วย Keystore)</div>
+<label class="check"><input id="consent" type="checkbox" required>ฉันยินยอมให้ส่งภาพหน้าจอเว็บไปยังบริการข้างต้นเมื่อเปิดแปล รวมถึงโหมดอัตโนมัติ</label>
+<button type="submit">บันทึกและอนุญาตบริการ</button><button id="clear" type="button" class="secondary">ลบ API key</button>
+</form><small>รุ่นทดลอง: ตำแหน่งคำแปลอาจคลาดเคลื่อน ไม่รองรับการลบข้อความเดิมหรือแปลล่วงหน้านอกหน้าจอ</small>
+</main><script type="module" src="options.js"></script></body></html>

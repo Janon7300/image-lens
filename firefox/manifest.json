@@ -1,0 +1,40 @@
+{
+  "manifest_version": 2,
+  "name": "Image Lens – Image Translator",
+  "version": "0.1.2",
+  "web_accessible_resources": [
+    "fonts/*.ttf"
+  ],
+  "description": "อ่านข้อความในรูปภาพบนหน้าเว็บและแปลเป็นข้อความภาษาไทยหรืออังกฤษ ด้วยบริการ AI ของคุณ",
+  "permissions": [
+    "activeTab",
+    "storage"
+  ],
+  "background": {
+    "page": "background.html",
+    "persistent": false
+  },
+  "options_page": "options.html",
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "image-lens@checkguard.local",
+      "strict_min_version": "140.0",
+      "data_collection_permissions": {
+        "required": [
+          "websiteContent",
+          "authenticationInfo"
+        ]
+      }
+    },
+    "gecko_android": {
+      "strict_min_version": "142.0"
+    }
+  },
+  "browser_action": {
+    "default_popup": "popup.html",
+    "default_title": "Image Lens"
+  },
+  "optional_permissions": [
+    "https://*/*"
+  ]
+}
